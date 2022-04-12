@@ -7,15 +7,15 @@ var y = canvas.height / 2;
 var changeX = canvas.width / 2;
 var changeY = canvas.height / 2;
 
-var speedDiagX = xSpeed / Math.sqrt(2, 2);
-var speedDiagY = ySpeed / Math.sqrt(2, 2);
+var speedDiagX = playerSpeedX / Math.sqrt(2, 2);
+var speedDiagY = playerSpeedY / Math.sqrt(2, 2);
 
-function renderPlayer(){
+function renderPlayer() {
     x = changeX;
     y = changeY;
     object.fillStyle = "black";
-    object.fillRect(changeX, changeY, objectWidth, objectHigh);
-    
+    object.fillRect(changeX, changeY, playerWidth, playerHigh);
+
 }
 
 function movePlayer() {
@@ -31,8 +31,8 @@ function movePlayer() {
         speedY = speedDiagY;
     }
     else {
-        speedX = xSpeed;
-        speedY = xSpeed;
+        speedX = playerSpeedX;
+        speedY = playerSpeedY;
     }
     if (keysPressed['a']) {
         if (changeX > speedX) {
@@ -51,19 +51,19 @@ function movePlayer() {
         }
     }
     if (keysPressed['d']) {
-        if (changeX < canvas.width - speedX - objectWidth) {
+        if (changeX < canvas.width - speedX - playerWidth) {
             changeX += speedX;
         }
         else {
-            changeX = canvas.width - objectWidth;
+            changeX = canvas.width - playerWidth;
         }
     }
     if (keysPressed['s']) {
-        if (changeY < (canvas.height - speedY - objectHigh)) {
+        if (changeY < (canvas.height - speedY - playerHigh)) {
             changeY += speedY;
         }
         else {
-            changeY = canvas.height - objectHigh;
+            changeY = canvas.height - playerHigh;
         }
     }
 }
