@@ -50,6 +50,7 @@ function animate() {
     renderPlayer();
     renderEnemy();
     renderBullets();
+    enemyMove(enemyConteiner);
 
     window.requestAnimationFrame(animate);
 }

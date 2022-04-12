@@ -52,14 +52,18 @@ function hitEnemyWithhBullets(item, bullet) {
     if (item != undefined) {
 
         for (var j = 0; j < enemyConteiner.length; j++) {
+           
+           
+
             if ((item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
-
+                        
                 mag.splice(bullet, 1);
                 index = mag.length;
                 enemyConteiner[j][4] -= bulletDmg;
+                                
                 giveColorEnemy();
                 checkIfDead(enemyConteiner[j][4], j);
             }
@@ -67,9 +71,9 @@ function hitEnemyWithhBullets(item, bullet) {
     }
 
 }
-function checkIfDead(enemyHp, enemy) {
+function checkIfDead(enemyHp, enemy1) {
     if (enemyHp <= 0) {
-        enemyConteiner.splice(enemyConteiner[enemy]);
+        enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[enemy1]);
         enemyIndex = enemyConteiner.length;
         createEnemy();
     }

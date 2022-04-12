@@ -12,6 +12,13 @@ var enemy = canvas.getContext("2d");
 var enemyColor = "blue";
 var enemyHp = 100;
 
+var enemySpeedX=0.5;
+var enemySpeedY=0.5;
+
+var enemySpeedXDiag=enemySpeedX / Math.sqrt(2, 2);;
+var enemySpeedYDiag=enemySpeedY / Math.sqrt(2, 2);;
+
+
 createEnemy();
 
 
@@ -26,12 +33,15 @@ function renderEnemy() {
 }
 
 function createEnemy() {
-    enemyX = Math.random() * (canvas.width - enemyWidth);
-    enemyY = Math.random() * (canvas.height - enemyHight);
-    enemy.fillRect(enemyX, enemyY, enemyWidth, enemyHight);
-    enemyConteiner.push([]);
-    enemyConteiner[enemyIndex].push(enemyX, enemyY, enemyWidth, enemyHight, enemyHp);
-    enemyIndex++
+   
+        enemyX = Math.random() * (canvas.width - enemyWidth);
+        enemyY = Math.random() * (canvas.height - enemyHight);
+        enemy.fillRect(enemyX, enemyY, enemyWidth, enemyHight);
+        enemyConteiner.push([]);
+        enemyConteiner[enemyIndex].push(enemyX, enemyY, enemyWidth, enemyHight, enemyHp);
+        enemyIndex++
+    
+ 
 }
 
 function giveColorEnemy() {
@@ -42,4 +52,21 @@ function color(color) {
     enemyColor = color;
 }
 
+function enemyMove(enemyConteiner){
+
+    for (var i = 0; i < enemyConteiner.length; i++) {
+        var item = enemyConteiner[i];
+        for (var j = 0; j < item.length; j++) {
+
+            var line = Math.sqrt(( changeX-item[0] ) * ( changeX-item[0]) + ( changeY-item[1] ) * ( changeY-item[1] ));
+
+            xxx = ( changeX -item[0]) / line * enemySpeedX;
+            yyy = ( changeY-item[1]) / line * enemySpeedY;
+            item[0]+=xxx;
+            item[1]+=yyy;
+            enemy.fillStyle = enemyColor;
+            enemy.fillRect(item[0], item[1], item[2], item[3]);
+        }
+    }
+}
 
