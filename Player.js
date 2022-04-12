@@ -1,4 +1,4 @@
-var object = canvas.getContext("2d");
+var playerModel = canvas.getContext("2d");
 let keysPressed = {};
 
 var x = canvas.width / 2;
@@ -10,12 +10,13 @@ var changeY = canvas.height / 2;
 var speedDiagX = playerSpeedX / Math.sqrt(2, 2);
 var speedDiagY = playerSpeedY / Math.sqrt(2, 2);
 
+
 function renderPlayer() {
     x = changeX;
-    y = changeY;
-    object.fillStyle = "black";
-    object.fillRect(changeX, changeY, playerWidth, playerHigh);
-
+    y = changeY;  
+    playerModel.drawImage(playerImage,changeX,changeY,playerWidth,playerHigh);
+ 
+    
 }
 
 function movePlayer() {
@@ -37,6 +38,7 @@ function movePlayer() {
     if (keysPressed['a']) {
         if (changeX > speedX) {
             changeX -= speedX;
+           
         }
         else {
             changeX = 0;

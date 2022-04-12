@@ -3,6 +3,8 @@ var playerSpeedX = 10;
 var playerSpeedY = 10;
 var playerHigh = 30;
 var playerWidth = 30;
+var playerImage= new Image();
+playerImage.src = 'gif/tank.png';
 
 //bullet
 var bullSpeed = 4;
