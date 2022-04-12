@@ -15,7 +15,7 @@ function bullet(high, width, x, y, pageX, pageY) {
 
     xxx = (pageX - x) / line * bullSpeed;
     yyy = (pageY - y) / line * bullSpeed;
-
+  
     mag[index].push(x+playerWidth/2-bullWidth/2, y+playerHigh/2-bullHigh/2, width, high, index, xxx, yyy,angle);
     index++;
 }
@@ -27,9 +27,9 @@ function renderBullets() {
         var item = mag[i];
         for (var j = 0; j < item.length; j++) {
             bulletObject.fillStyle = bulletColor;
-            
+           
             rotateBullet(item[0],item[1],item[7]);
-         
+           
         }
     }
 }
@@ -102,4 +102,5 @@ function rotateBullet(i,j,angle){
 
     context.restore();
 }
+
 
