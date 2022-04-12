@@ -1,7 +1,6 @@
 var mag = [[]];
 var index = 0;
 var bulletObject = canvas.getContext("2d");
-var bulletColor = "green";
 
 function bullet(high, width, x, y, pageX, pageY) {
     bulletObject.fillStyle = bulletColor;
@@ -52,19 +51,20 @@ function hitEnemyWithhBullets(item, bullet) {
     if (item != undefined) {
 
         for (var j = 0; j < enemyConteiner.length; j++) {
-           
-           
 
             if ((item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
-                        
+
                 mag.splice(bullet, 1);
                 index = mag.length;
                 enemyConteiner[j][4] -= bulletDmg;
-                                
-                giveColorEnemy();
+
+                if (enemyConteiner[j][4] > 0) {
+                    giveColorEnemy(j);
+                }
+
                 checkIfDead(enemyConteiner[j][4], j);
             }
         }
@@ -76,7 +76,12 @@ function checkIfDead(enemyHp, enemy1) {
         enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[enemy1]);
         enemyIndex = enemyConteiner.length;
         score++;
-        createEnemy();
+        if (enemyConteiner.length == 0) {
+
+            createHorde();
+
+        }
+
     }
 }
 

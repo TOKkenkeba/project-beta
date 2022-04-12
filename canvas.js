@@ -1,7 +1,7 @@
 var canvas = document.querySelector("canvas");
 
-canvas.width = window.innerWidth-10;
-canvas.height = window.innerHeight-10;
+canvas.width = window.innerWidth - 10;
+canvas.height = window.innerHeight - 10;
 
 var mouseX;
 var mouseY;
@@ -24,11 +24,11 @@ document.addEventListener("mousedown", function () {
 
     shot = setInterval(() => {
         bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
-    }, bullSpeed * 100);
+    }, bullSpeed * 50);
 
 });
 
-document.addEventListener("click", (event)=> {
+document.addEventListener("click", (event) => {
     bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY);
 });
 
@@ -41,7 +41,7 @@ document.addEventListener("mouseup", (event) => {
 init();
 function init() {
     window.requestAnimationFrame(animate);
-    
+
 }
 
 function animate() {
