@@ -28,9 +28,26 @@ function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Color, Index) {
 
     enemyX = Math.random() * (canvas.width - Width);
     enemyY = Math.random() * (canvas.height - Hight);
+    var rand = Math.round(Math.random() * (4 - 1) + 1);
     enemy.fillRect(enemyX, enemyY, Width, Hight);
     enemyConteiner.push([]);
-    enemyConteiner[enemyIndex].push(enemyX, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+
+    console.log(rand);
+    switch (rand) {
+        case 1:
+            enemyConteiner[enemyIndex].push(enemyX, 0, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            break;
+        case 2:
+            enemyConteiner[enemyIndex].push(0, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            break;
+        case 3:
+            enemyConteiner[enemyIndex].push(canvas.width - Width, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            break;
+        case 4:
+            enemyConteiner[enemyIndex].push(enemyX, canvas.height - Hight, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            break;
+    }
+
     enemyIndex++
 }
 
