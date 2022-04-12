@@ -59,14 +59,30 @@ function enemyMove(enemyConteiner){
         for (var j = 0; j < item.length; j++) {
 
             var line = Math.sqrt(( changeX-item[0] ) * ( changeX-item[0]) + ( changeY-item[1] ) * ( changeY-item[1] ));
-
             xxx = ( changeX -item[0]) / line * enemySpeedX;
             yyy = ( changeY-item[1]) / line * enemySpeedY;
             item[0]+=xxx;
             item[1]+=yyy;
+            
             enemy.fillStyle = enemyColor;
             enemy.fillRect(item[0], item[1], item[2], item[3]);
+            detectColision(j);
         }
     }
+}
+
+function detectColision(j){
+    if(enemyConteiner[j] != undefined){
+        if ((changeX >= enemyConteiner[j][0] && changeX <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY >= enemyConteiner[j][1] && changeY <= enemyConteiner[j][1] + enemyConteiner[j][3])
+        || (changeX+ objectWidth >= enemyConteiner[j][0] && changeX + objectWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY >= enemyConteiner[j][1] && changeY <= enemyConteiner[j][1] + enemyConteiner[j][3])
+        || (changeX>= enemyConteiner[j][0] && changeX <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY + objectHigh >= enemyConteiner[j][1] && changeY + objectHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])
+        || (changeX + objectWidth >= enemyConteiner[j][0] && changeX + objectWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY + objectHigh >= enemyConteiner[j][1] && changeY + objectHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
+            endGame();
+            location.reload();
+            enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[j]);
+       
+    }
+    }
+
 }
 

@@ -75,6 +75,7 @@ function checkIfDead(enemyHp, enemy1) {
     if (enemyHp <= 0) {
         enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[enemy1]);
         enemyIndex = enemyConteiner.length;
+        score++;
         createEnemy();
     }
 }
