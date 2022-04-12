@@ -8,8 +8,8 @@ playerImage.src = 'gif/Starship.png';
 
 //bullet
 var bullSpeed = 4;
-var bullHigh = 20;
-var bullWidth = 20;
+var bullHigh = 30;
+var bullWidth = 15;
 var bulletDmg = 20;
 var bulletColor = "green";
 var bulletImage= new Image();
