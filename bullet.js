@@ -3,9 +3,7 @@ var index = 0;
 var bulletObject = canvas.getContext("2d");
 
 function bullet(high, width, x, y, pageX, pageY) {
-    bulletObject.fillStyle = bulletColor;
-    bulletObject.fillRect(x+playerWidth/2-bullWidth/2, y+playerHigh/2-bullHigh/2, width, high);
-
+  
     mag.push([]);
     var line = Math.sqrt((pageX - x) * (pageX - x) + (pageY - y) * (pageY - y));
     var angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
@@ -26,8 +24,7 @@ function renderBullets() {
     for (var i = 0; i < mag.length; i++) {
         var item = mag[i];
         for (var j = 0; j < item.length; j++) {
-            bulletObject.fillStyle = bulletColor;
-           
+          
             rotateBullet(item[0],item[1],item[7]);
            
         }
@@ -68,10 +65,6 @@ function hitEnemyWithhBullets(item, bullet) {
                 mag.splice(bullet, 1);
                 index = mag.length;
                 enemyConteiner[j][4] -= bulletDmg;
-
-                if (enemyConteiner[j][4] > 0) {
-                    giveColorEnemy(j);
-                }
 
                 checkIfDead(enemyConteiner[j][4], j);
             }

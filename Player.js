@@ -15,8 +15,6 @@ function renderPlayer() {
     x = changeX;
     y = changeY;  
     rotatePlayer();
- 
-    //playerModel.fillRect(changeX,changeY,playerWidth,playerHigh);
 }
 
 function movePlayer() {
@@ -76,7 +74,7 @@ function rotatePlayer(){
     if(changeX<mouseX){
       angle+=180;
     }
-    console.log(angle);
+ 
     context.save();
     context.translate(changeX+playerWidth/2, changeY+playerHigh/2);    
     context.rotate(angle * Math.PI / 180);

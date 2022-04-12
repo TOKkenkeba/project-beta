@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 
-canvas.width = window.innerWidth - 10;
-canvas.height = window.innerHeight - 10;
+canvas.width = window.innerWidth - 4;
+canvas.height = window.innerHeight - 6;
 
 var mouseX;
 var mouseY;
@@ -49,9 +49,9 @@ function init() {
 
 function animate() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(mainBackground,0,0, canvas.width, canvas.height);
     movePlayer();
     renderPlayer();
-    renderEnemy();
     renderBullets();
     enemyMove(enemyConteiner);
 

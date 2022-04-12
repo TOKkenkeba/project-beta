@@ -7,64 +7,35 @@ var enemyMin = canvas.getContext("2d");
 
 createHorde();
 
-function renderEnemy() {
-    for (var i = 0; i < enemyConteiner.length; i++) {
-        var item = enemyConteiner[i];
-        for (var j = 0; j < item.length; j++) {
-            enemy.fillStyle = enemyColor;
-            enemy.fillRect(item[0], item[1], item[2], item[3]);
-        }
-    }
-}
-
 function createHorde() {
-    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyColor, enemyIndex);
-    createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyColorMin, enemyIndexMin);
-    console.log(enemyConteiner[0]);
-    console.log(enemyConteiner[1]);
+   
+    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
+    createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
+
 }
 
-function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Color, Index) {
+function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Index) {
 
     enemyX = Math.random() * (canvas.width - Width);
     enemyY = Math.random() * (canvas.height - Hight);
     var rand = Math.round(Math.random() * (4 - 1) + 1);
-    enemy.fillRect(enemyX, enemyY, Width, Hight);
     enemyConteiner.push([]);
-
-    console.log(rand);
     switch (rand) {
         case 1:
-            enemyConteiner[enemyIndex].push(enemyX, 0, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            enemyConteiner[enemyIndex].push(enemyX, 0, Width, Hight, Hp, SpeedX, SpeedY, Index);
             break;
         case 2:
-            enemyConteiner[enemyIndex].push(0, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            enemyConteiner[enemyIndex].push(0, enemyY, Width, Hight, Hp, SpeedX, SpeedY,  Index);
             break;
         case 3:
-            enemyConteiner[enemyIndex].push(canvas.width - Width, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            enemyConteiner[enemyIndex].push(canvas.width - Width, enemyY, Width, Hight, Hp, SpeedX, SpeedY,  Index);
             break;
         case 4:
-            enemyConteiner[enemyIndex].push(enemyX, canvas.height - Hight, Width, Hight, Hp, SpeedX, SpeedY, Color, Index);
+            enemyConteiner[enemyIndex].push(enemyX, canvas.height - Hight, Width, Hight, Hp, SpeedX, SpeedY, Index);
             break;
     }
 
     enemyIndex++
-}
-
-function giveColorEnemy(j) {
-    setTimeout(() => color("red", j), 1);
-
-    if (enemyConteiner[j][8] == 0) {
-        setTimeout(() => color(enemyColor, j), 50);
-    }
-    if (enemyConteiner[j][8] == 1) {
-        setTimeout(() => color(enemyColorMin, j), 50);
-    }
-
-}
-
-function color(color, j) {
-    enemyConteiner[j][7] = color;
 }
 
 function enemyMove(enemyConteiner) {
@@ -78,8 +49,15 @@ function enemyMove(enemyConteiner) {
             yyy = (changeY - item[1]) / line * item[6];
             item[0] += xxx;
             item[1] += yyy;
-            enemy.fillStyle = item[7];
-            enemy.fillRect(item[0], item[1], item[2], item[3]);
+      
+            var angle =Math.atan((item[1]-changeY)/(item[0]-changeX))*180/Math.PI-90;
+          
+            if(changeX>item[0]){
+                angle+=180;
+             }
+
+             rotateEnemy(item[0], item[1], item[2], item[3],angle,item[7]);
+           
             detectColision(j);
         }
     }
@@ -98,4 +76,26 @@ function detectColision(j) {
     }
 
 }
+
+function rotateEnemy(x,y,width,high,angle,index){
+   
+
+        context.save();
+        context.translate(x+width/2, y+high/2);    
+        context.rotate(angle* Math.PI / 180);
+  
+        if(index==0){
+            enemy.drawImage(enemyImage,-width/2,-high/2, width, high);
+        }
+        else if(index==1){
+            enemyMin.drawImage(enemyImageMin,-width/2,-high/2, width, high);
+        }
+          
+        context.restore();
+    
+ 
+    
+
+}
+
 
