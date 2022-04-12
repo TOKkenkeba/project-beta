@@ -1,10 +1,10 @@
 //player
 var playerSpeedX = 10;
 var playerSpeedY = 10;
-var playerHigh = 30;
-var playerWidth = 30;
+var playerHigh = 40;
+var playerWidth = 40;
 var playerImage= new Image();
-playerImage.src = 'gif/tank.png';
+playerImage.src = 'gif/Starship.png';
 
 //bullet
 var bullSpeed = 4;
@@ -12,6 +12,9 @@ var bullHigh = 20;
 var bullWidth = 20;
 var bulletDmg = 20;
 var bulletColor = "green";
+var bulletImage= new Image();
+bulletImage.src = 'gif/bullet.png';
+
 
 //Enemy Type deff
 var enemyIndex = 0;

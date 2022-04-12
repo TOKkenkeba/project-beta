@@ -6,15 +6,18 @@ canvas.height = window.innerHeight - 10;
 var mouseX;
 var mouseY;
 
+const context = canvas.getContext('2d');
+
+var shot;
+
+
 document.addEventListener('keydown', (event) => {
     keysPressed[event.key] = true;
 });
 document.addEventListener('keyup', (event) => {
     delete keysPressed[event.key];
 });
-const context = canvas.getContext('2d');
 
-var shot;
 document.addEventListener("mousemove", (event) => {
     mouseX = event.pageX;
     mouseY = event.pageY;

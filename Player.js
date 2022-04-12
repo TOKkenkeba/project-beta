@@ -14,9 +14,9 @@ var speedDiagY = playerSpeedY / Math.sqrt(2, 2);
 function renderPlayer() {
     x = changeX;
     y = changeY;  
-    playerModel.drawImage(playerImage,changeX,changeY,playerWidth,playerHigh);
+    rotatePlayer();
  
-    
+    //playerModel.fillRect(changeX,changeY,playerWidth,playerHigh);
 }
 
 function movePlayer() {
@@ -68,4 +68,19 @@ function movePlayer() {
             changeY = canvas.height - playerHigh;
         }
     }
+}
+
+function rotatePlayer(){
+
+    var angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
+    if(changeX<mouseX){
+      angle+=180;
+    }
+    console.log(angle);
+    context.save();
+    context.translate(changeX+playerWidth/2, changeY+playerHigh/2);    
+    context.rotate(angle * Math.PI / 180);
+    
+    playerModel.drawImage(playerImage,-playerWidth/2,-playerHigh/2,playerWidth,playerHigh);
+    context.restore();
 }

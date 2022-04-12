@@ -4,13 +4,19 @@ var bulletObject = canvas.getContext("2d");
 
 function bullet(high, width, x, y, pageX, pageY) {
     bulletObject.fillStyle = bulletColor;
-    bulletObject.fillRect(x, y, width, high);
+    bulletObject.fillRect(x+playerWidth/2-bullWidth/2, y+playerHigh/2-bullHigh/2, width, high);
 
     mag.push([]);
     var line = Math.sqrt((pageX - x) * (pageX - x) + (pageY - y) * (pageY - y));
+    var angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
+    if(changeX<mouseX){
+        angle+=180;
+      }
+
     xxx = (pageX - x) / line * bullSpeed;
     yyy = (pageY - y) / line * bullSpeed;
-    mag[index].push(x, y, width, high, index, xxx, yyy);
+
+    mag[index].push(x+playerWidth/2-bullWidth/2, y+playerHigh/2-bullHigh/2, width, high, index, xxx, yyy,angle);
     index++;
 }
 
@@ -21,7 +27,9 @@ function renderBullets() {
         var item = mag[i];
         for (var j = 0; j < item.length; j++) {
             bulletObject.fillStyle = bulletColor;
-            bulletObject.fillRect(item[0], item[1], item[2], item[3]);
+            
+            rotateBullet(item[0],item[1],item[7]);
+         
         }
     }
 }
@@ -83,5 +91,15 @@ function checkIfDead(enemyHp, enemy1) {
         }
 
     }
+}
+
+function rotateBullet(i,j,angle){
+    context.save();
+    context.translate(i+bullWidth/2, j+bullHigh/2);    
+    context.rotate(angle * Math.PI / 180);
+   
+    bulletObject.drawImage(bulletImage,-bullWidth/2,-bullHigh/2, bullWidth, bullHigh );
+
+    context.restore();
 }
 
