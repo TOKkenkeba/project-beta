@@ -54,7 +54,7 @@ function animate() {
     renderPlayer();
     renderBullets();
     enemyMove(enemyConteiner);
-
+    renederItemBar();    
     window.requestAnimationFrame(animate);
 }
 
