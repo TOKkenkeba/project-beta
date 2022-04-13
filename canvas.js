@@ -7,7 +7,7 @@ var mouseX;
 var mouseY;
 
 const context = canvas.getContext('2d');
-
+var gameOverStage=false;
 var shot;
 
 
@@ -33,6 +33,9 @@ document.addEventListener("mousedown", function () {
 
 document.addEventListener("click", (event) => {
     bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY);
+    if(gameOverStage==true && event.pageX > restartX && event.pageX<restartX+restartWidth && event.pageY>restartY&&event.pageY<restartY+restartHigh){
+        restartGame();
+    }
 });
 
 document.addEventListener("mouseup", (event) => {
@@ -43,7 +46,10 @@ document.addEventListener("mouseup", (event) => {
 
 init();
 function init() {
-    window.requestAnimationFrame(animate);
+  
+        window.requestAnimationFrame(animate);
+    
+   
 
 }
 
@@ -54,8 +60,18 @@ function animate() {
     renderPlayer();
     renderBullets();
     enemyMove(enemyConteiner);
-    renederItemBar();    
+    renederItemBar();  
+    renderScoreBoard();
+    xpBarRender();  
+    xpBarRenderFill();
+  
+    
+
+    console.log(gameOverStage);
+    if(gameOverStage==false){
     window.requestAnimationFrame(animate);
+    }
+ 
 }
 
 
