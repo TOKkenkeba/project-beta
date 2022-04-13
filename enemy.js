@@ -69,8 +69,7 @@ function detectColision(j) {
             || (changeX + playerWidth >= enemyConteiner[j][0] && changeX + playerWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY >= enemyConteiner[j][1] && changeY <= enemyConteiner[j][1] + enemyConteiner[j][3])
             || (changeX >= enemyConteiner[j][0] && changeX <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY + playerHigh >= enemyConteiner[j][1] && changeY + playerHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])
             || (changeX + playerWidth >= enemyConteiner[j][0] && changeX + playerWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY + playerHigh >= enemyConteiner[j][1] && changeY + playerHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
-            endGame();
-            location.reload();
+            gameOver();
             enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[j]);
         }
     }
@@ -79,19 +78,18 @@ function detectColision(j) {
 
 function rotateEnemy(x,y,width,high,angle,index){
    
-
-        context.save();
-        context.translate(x+width/2, y+high/2);    
-        context.rotate(angle* Math.PI / 180);
-  
-        if(index==0){
-            enemy.drawImage(enemyImage,-width/2,-high/2, width, high);
-        }
-        else if(index==1){
-            enemyMin.drawImage(enemyImageMin,-width/2,-high/2, width, high);
-        }
-          
-        context.restore();
+   if(gameOverStage==false){
+    context.save();
+    context.translate(x+width/2, y+high/2);    
+    context.rotate(angle* Math.PI / 180);
+    if(index==0){
+        enemy.drawImage(enemyImage,-width/2,-high/2, width, high);
+    }
+    else if(index==1){
+        enemyMin.drawImage(enemyImageMin,-width/2,-high/2, width, high);
+    }   
+    context.restore();
+   }
     
  
     
