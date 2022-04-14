@@ -11,7 +11,9 @@ function createHorde() {
    
     createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
     createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
-
+    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
+   
+    createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
 }
 
 function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Index) {
@@ -77,15 +79,15 @@ function detectColision(j) {
 }
 
 function rotateEnemy(x,y,width,high,angle,index){
-   
+
    if(gameOverStage==false){
     context.save();
     context.translate(x+width/2, y+high/2);    
     context.rotate(angle* Math.PI / 180);
-    if(index==0){
+    if(index%2==0){
         enemy.drawImage(enemyImage,-width/2,-high/2, width, high);
     }
-    else if(index==1){
+    else {
         enemyMin.drawImage(enemyImageMin,-width/2,-high/2, width, high);
     }   
     context.restore();

@@ -4,7 +4,7 @@ var tleleportHas=true;
 function skillsCheck(){
     
    
-    if(tleleportHas && keysPressed["1"]){
+    if(tleleportHas && keysPressed[49]&&mouseX<=canvas.width && mouseX>=0 && mouseY>=0 && mouseY<=canvas.height){
         teleport();
         tleleportHas=false;
         setTimeout(()=>teleportHasAllow(),2000);
@@ -13,11 +13,12 @@ function skillsCheck(){
 }
 
 function teleport(){
+     
         changeX=mouseX;
         changeY=mouseY; 
 }
 
 function teleportHasAllow(){
-    tleleportHas=true;
+    tleleportHas=true;1
 }
 

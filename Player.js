@@ -22,10 +22,10 @@ function movePlayer() {
     var speedX;
     var speedY;
 
-    if (keysPressed['w'] && keysPressed['a'] && !keysPressed['d']
-        || keysPressed['w'] && keysPressed['d'] && !keysPressed['a']
-        || keysPressed['s'] && keysPressed['a'] && !keysPressed['d']
-        || keysPressed['s'] && keysPressed['d'] && !keysPressed['a']) {
+    if (keysPressed[87] && keysPressed[65] && !keysPressed[68]
+        || keysPressed[87] && keysPressed[68] && !keysPressed[65]
+        || keysPressed[83] && keysPressed[65] && !keysPressed[68]
+        || keysPressed[83] && keysPressed[68] && !keysPressed[65]) {
         speedX = speedDiagX;
         speedY = speedDiagY;
     }
@@ -33,7 +33,7 @@ function movePlayer() {
         speedX = playerSpeedX;
         speedY = playerSpeedY;
     }
-    if (keysPressed['a']) {
+    if (keysPressed[65]) {
         if (changeX > speedX) {
             changeX -= speedX;
            
@@ -42,7 +42,7 @@ function movePlayer() {
             changeX = 0;
         }
     }
-    if (keysPressed['w']) {
+    if (keysPressed[87]) {
         if (changeY > speedY) {
             changeY -= speedY;
         }
@@ -50,7 +50,7 @@ function movePlayer() {
             changeY = 0;
         }
     }
-    if (keysPressed['d']) {
+    if (keysPressed[68]) {
         if (changeX < canvas.width - speedX - playerWidth) {
             changeX += speedX;
         }
@@ -58,7 +58,7 @@ function movePlayer() {
             changeX = canvas.width - playerWidth;
         }
     }
-    if (keysPressed['s']) {
+    if (keysPressed[83]) {
         if (changeY < (canvas.height - speedY - playerHigh)) {
             changeY += speedY;
         }

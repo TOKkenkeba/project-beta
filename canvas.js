@@ -12,10 +12,10 @@ var shot;
 
 
 document.addEventListener('keydown', (event) => {
-    keysPressed[event.key] = true;
+    keysPressed[event.keyCode] = true;
 });
 document.addEventListener('keyup', (event) => {
-    delete keysPressed[event.key];
+    delete keysPressed[event.keyCode];
 });
 
 document.addEventListener("mousemove", (event) => {
