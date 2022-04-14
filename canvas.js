@@ -23,24 +23,31 @@ document.addEventListener("mousemove", (event) => {
     mouseY = event.pageY;
 
 });
+var click=true;
 document.addEventListener("mousedown", function () {
 
     shot = setInterval(() => {
         bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
     }, bullSpeed * 50);
+    click=false;
 
 });
 
 document.addEventListener("click", (event) => {
+   if(click){
     bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY);
     if(gameOverStage==true && event.pageX > restartX && event.pageX<restartX+restartWidth && event.pageY>restartY&&event.pageY<restartY+restartHigh){
         restartGame();
     }
+   }
+
 });
+
 
 document.addEventListener("mouseup", (event) => {
 
     clearInterval(shot);
+    click=true;
 
 });
 
@@ -63,11 +70,9 @@ function animate() {
     renederItemBar();  
     renderScoreBoard();
     xpBarRender();  
+    skillsCheck();
     xpBarRenderFill();
-  
-    
-
-    console.log(gameOverStage);
+ 
     if(gameOverStage==false){
     window.requestAnimationFrame(animate);
     }

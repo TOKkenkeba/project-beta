@@ -11,8 +11,8 @@ var playerImage= new Image();
 playerImage.src = 'gif/Starship.png';
 
 //bullet
-var bullSpeed = 4;
-var bullHigh = 30;
+var bullSpeed =4;
+var bullHigh = 15;
 var bullWidth = 15;
 var bulletDmg = 20;
 var bulletImage= new Image();
@@ -40,3 +40,6 @@ var enemySpeedYMin = 1;
 var enemyImageMin= new Image();
 enemyImageMin.src = 'gif/enemymin.png';
 
+//skill
+var teleportImage= new Image();
+teleportImage.src = 'gif/teleport.png';

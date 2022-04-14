@@ -25,9 +25,14 @@ function renederItemBar(){
 }
 
 function fillBar(item,text,x,y,width,high){
+    item.fillStyle = "rgba(255, 255, 255, 0.1)";
+    if(text=="1"){
+        item.drawImage(teleportImage,x,y, width, high);
+    }
+    
     
 
-    item.fillStyle = "rgba(255, 255, 255, 0.1)";
+    
     item.fillRect(x,y,width,high);
     item.font = "30px ariel";
     item.fillStyle="black";
