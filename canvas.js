@@ -38,6 +38,18 @@ document.addEventListener("mousedown", (event)=>{
 
 });
 
+document.addEventListener('visibilitychange', function() {
+	if(document.hidden) {
+
+        gameOverStage==false;
+        keysPressed ={};
+    }
+    
+	else{
+    gameOverStage==true;
+    }
+});
+
 document.addEventListener("click", (event) => {
    if(click){
     bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY);
