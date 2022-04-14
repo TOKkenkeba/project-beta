@@ -24,12 +24,15 @@ document.addEventListener("mousemove", (event) => {
 
 });
 var click=true;
-document.addEventListener("mousedown", function () {
-
-    shot = setInterval(() => {
-        bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
-    }, bullSpeed * 50);
-    click=false;
+document.addEventListener("mousedown", (event)=>{
+  
+    if(event.which==1){
+        shot = setInterval(() => {
+            bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
+        }, bullSpeed * 50);
+        click=false;
+    }
+ 
 
 });
 
