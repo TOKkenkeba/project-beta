@@ -24,9 +24,11 @@ document.addEventListener("mousemove", (event) => {
 
 });
 var click=true;
+
 document.addEventListener("mousedown", (event)=>{
   
     if(event.which==1){
+        clearInterval(shot);
         shot = setInterval(() => {
             bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
         }, bullSpeed * 50);
