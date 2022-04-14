@@ -76,6 +76,7 @@ function init() {
    
 
 }
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 function animate() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -89,7 +90,6 @@ function animate() {
     xpBarRender();  
     skillsCheck();
     xpBarRenderFill();
- 
     if(gameOverStage==false){
     window.requestAnimationFrame(animate);
     }
