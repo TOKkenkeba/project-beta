@@ -1,14 +1,14 @@
-var playerModel = canvas.getContext("2d");
+let playerModel = canvas.getContext("2d");
 let keysPressed = {};
 
-var x = canvas.width / 2;
-var y = canvas.height / 2;
+let x = canvas.width / 2;
+let y = canvas.height / 2;
 
-var changeX = canvas.width / 2;
-var changeY = canvas.height / 2;
+let changeX = canvas.width / 2;
+let changeY = canvas.height / 2;
 
-var speedDiagX = playerSpeedX / Math.sqrt(2, 2);
-var speedDiagY = playerSpeedY / Math.sqrt(2, 2);
+let speedDiagX = playerSpeedX / Math.sqrt(2, 2);
+let speedDiagY = playerSpeedY / Math.sqrt(2, 2);
 
 
 function renderPlayer() {
@@ -19,8 +19,8 @@ function renderPlayer() {
 
 function movePlayer() {
 
-    var speedX;
-    var speedY;
+    let speedX;
+    let speedY;
 
     if (keysPressed[87] && keysPressed[65] && !keysPressed[68]
         || keysPressed[87] && keysPressed[68] && !keysPressed[65]
@@ -70,7 +70,7 @@ function movePlayer() {
 
 function rotatePlayer(){
 
-    var angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
+    let angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
     if(changeX<mouseX){
       angle+=180;
     }

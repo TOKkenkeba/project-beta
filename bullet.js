@@ -1,29 +1,45 @@
-var mag = [[]];
-var index = 0;
-var bulletObject = canvas.getContext("2d");
+let mag = [[]];
+let index = 0;
+let bulletObject = canvas.getContext("2d");
 
 function bullet(high, width, x, y, pageX, pageY) {
 
     mag.push([]);
-    var line = Math.sqrt((pageX - x) * (pageX - x) + (pageY - y) * (pageY - y));
-    var angle = Math.atan((mouseY - changeY) / (mouseX - changeX)) * 180 / Math.PI - 90;
-    if (changeX < mouseX) {
+
+    let line = calculateDiagonal(x,y,pageX,pageY);;
+    let angle = calculateAngle(mouseX,mouseY,changeX,changeY);
+    let stepXY =calculateStepForBullet(x,y,pageX,pageY,line,bullSpeed);
+    
+    mag[index].push(x + playerWidth / 2 - bullWidth / 2, y + playerHigh / 2 - bullHigh / 2, width, high, index, stepXY[0],stepXY[1], angle);
+    index++;
+}
+
+function calculateDiagonal(poinOneX,pointOneY,pointTwoX,pointTwoY){
+    let line = Math.sqrt((pointTwoX - poinOneX) * (pointTwoX- poinOneX) + (pointTwoY- pointOneY) * (pointTwoY- pointOneY));
+    return line;
+}
+
+function calculateAngle(poinOneX,pointOneY,pointTwoX,pointTwoY){
+    let angle = Math.atan((pointOneY - pointTwoY) / (poinOneX - pointTwoX)) * 180 / Math.PI - 90;
+    if (pointTwoX < poinOneX) {
         angle += 180;
     }
+    return angle;
+}
 
-    xxx = (pageX - x) / line * bullSpeed;
-    yyy = (pageY - y) / line * bullSpeed;
-
-    mag[index].push(x + playerWidth / 2 - bullWidth / 2, y + playerHigh / 2 - bullHigh / 2, width, high, index, xxx, yyy, angle);
-    index++;
+function calculateStepForBullet(poinOneX,pointOneY,pointTwoX,pointTwoY,line,bullSpeed){
+    let stepXY=[];
+    stepXY.push((pointTwoX - poinOneX) / line * bullSpeed);
+    stepXY.push((pointTwoY - pointOneY) / line * bullSpeed);
+    return stepXY;
 }
 
 function renderBullets() {
 
     moveBullet();
-    for (var i = 0; i < mag.length; i++) {
-        var item = mag[i];
-        for (var j = 0; j < item.length; j++) {
+    for (let i = 0; i < mag.length; i++) {
+        let item = mag[i];
+        for (let j = 0; j < item.length; j++) {
 
             rotateBullet(item[0], item[1], item[7]);
          
@@ -32,9 +48,9 @@ function renderBullets() {
 }
 
 function moveBullet() {
-    for (var i = 0; i < mag.length; i++) {
-        var item = mag[i];
-        for (var j = 0; j < item.length; j++) {
+    for (let i = 0; i < mag.length; i++) {
+        let item = mag[i];
+        for (let j = 0; j < item.length; j++) {
             item[0] += item[5];
             item[1] += item[6];
         }
@@ -55,7 +71,7 @@ function hitEnemyWithhBullets(item, bullet) {
 
     if (item != undefined) {
 
-        for (var j = 0; j < enemyConteiner.length; j++) {
+        for (let j = 0; j < enemyConteiner.length; j++) {
 
             if ((item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
@@ -90,9 +106,7 @@ function rotateBullet(i, j, angle) {
     context.save();
     context.translate(i + bullWidth / 2, j + bullHigh / 2);
     context.rotate(angle * Math.PI / 180);
-
     bulletObject.drawImage(bulletImage, -bullWidth / 2, -bullHigh / 2, bullWidth, bullHigh);
-
     context.restore();
 }
 

@@ -1,9 +1,8 @@
-var enemyX;
-var enemyY;
-var enemyConteiner = [];
-var enemyIndex = 0;
-var enemy = canvas.getContext("2d");
-var enemyMin = canvas.getContext("2d");
+let enemyX;
+let enemyY;
+let enemyConteiner = [];
+let enemy = canvas.getContext("2d");
+let enemyMin = canvas.getContext("2d");
 
 createHorde();
 
@@ -20,7 +19,7 @@ function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Index) {
 
     enemyX = Math.random() * (canvas.width - Width);
     enemyY = Math.random() * (canvas.height - Hight);
-    var rand = Math.round(Math.random() * (4 - 1) + 1);
+    let rand = Math.round(Math.random() * (4 - 1) + 1);
     enemyConteiner.push([]);
     switch (rand) {
         case 1:
@@ -42,17 +41,17 @@ function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Index) {
 
 function enemyMove(enemyConteiner) {
 
-    for (var i = 0; i < enemyConteiner.length; i++) {
-        var item = enemyConteiner[i];
-        for (var j = 0; j < item.length; j++) {
+    for (let i = 0; i < enemyConteiner.length; i++) {
+        let item = enemyConteiner[i];
+        for (let j = 0; j < item.length; j++) {
 
-            var line = Math.sqrt((changeX - item[0]) * (changeX - item[0]) + (changeY - item[1]) * (changeY - item[1]));
+            let line = Math.sqrt((changeX - item[0]) * (changeX - item[0]) + (changeY - item[1]) * (changeY - item[1]));
             xxx = (changeX - item[0]) / line * item[5];
             yyy = (changeY - item[1]) / line * item[6];
             item[0] += xxx;
             item[1] += yyy;
       
-            var angle =Math.atan((item[1]-changeY)/(item[0]-changeX))*180/Math.PI-90;
+            let angle =Math.atan((item[1]-changeY)/(item[0]-changeX))*180/Math.PI-90;
           
             if(changeX>item[0]){
                 angle+=180;

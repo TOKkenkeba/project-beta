@@ -3,12 +3,12 @@ const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth - 4;
 canvas.height = window.innerHeight - 6;
 
-var mouseX;
-var mouseY;
+let mouseX;
+let mouseY;
 
 const context = canvas.getContext('2d');
-var gameOverStage=false;
-var shot;
+let gameOverStage=false;
+let shot;
 
 
 document.addEventListener('keydown', (event) => {
@@ -23,7 +23,7 @@ document.addEventListener("mousemove", (event) => {
     mouseY = event.pageY;
 
 });
-var click=true;
+let click=true;
 
 document.addEventListener("mousedown", (event)=>{
   
@@ -71,14 +71,16 @@ document.addEventListener("mouseup", (event) => {
 init();
 function init() {
   
-        window.requestAnimationFrame(animate);
+    setTimeout(() =>  window.requestAnimationFrame(animate), 10);
+       
     
    
 
 }
-document.addEventListener('contextmenu', event => event.preventDefault());
+//document.addEventListener('contextmenu', event => event.preventDefault());
 
 function animate() {
+    
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(mainBackground,0,0, canvas.width, canvas.height);
     movePlayer();

@@ -1,15 +1,15 @@
-var barNumber = 5;
-var itemBarWidth=100*barNumber;
-var itemBarHeigh=100;
-var itemBarX =canvas.width/2-itemBarWidth/2;
-var itemBarY= canvas.height-itemBarHeigh;
-var itemBar = canvas.getContext("2d");
+let barNumber = 5;
+let itemBarWidth=100*barNumber;
+let itemBarHeigh=100;
+let itemBarX =canvas.width/2-itemBarWidth/2;
+let itemBarY= canvas.height-itemBarHeigh;
+let itemBar = canvas.getContext("2d");
 
-var itemOne = canvas.getContext("2d");
-var itemTwo= canvas.getContext("2d");
-var itemThree = canvas.getContext("2d");
-var itemFour = canvas.getContext("2d");
-var itemFive = canvas.getContext("2d");
+let itemOne = canvas.getContext("2d");
+let itemTwo= canvas.getContext("2d");
+let itemThree = canvas.getContext("2d");
+let itemFour = canvas.getContext("2d");
+let itemFive = canvas.getContext("2d");
 
 function renederItemBar(){
     

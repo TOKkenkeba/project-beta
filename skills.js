@@ -1,24 +1,26 @@
 
-var teleportIcon = canvas.getContext("2d");
-var tleleportHas=true;
-function skillsCheck(){
-    
-   
-    if(tleleportHas && keysPressed[49]&&mouseX<=canvas.width && mouseX>=0 && mouseY>=0 && mouseY<=canvas.height){
+let teleportIcon = canvas.getContext("2d");
+let tleleportHas = true;
+function skillsCheck() {
+
+    if (tleleportHas && keysPressed[49] && mouseX <= canvas.width && mouseX >= 0 && mouseY >= 0 && mouseY <= canvas.height) {
         teleport();
-        tleleportHas=false;
-        setTimeout(()=>teleportHasAllow(),2000);
+        tleleportHas = false;
+        setTimeout(() => teleportHasAllow(), 2000);
+
     }
-   
 }
 
-function teleport(){
-     
-        changeX=mouseX;
-        changeY=mouseY; 
+function teleport() {
+
+    changeX = mouseX;
+    changeY = mouseY;
+
 }
 
-function teleportHasAllow(){
-    tleleportHas=true;1
+function teleportHasAllow() {
+
+    tleleportHas = true; 
+
 }
 
