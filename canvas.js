@@ -86,6 +86,7 @@ function animate() {
     movePlayer();
     renderPlayer();
     renderBullets();
+    renderBulletsEnemy();
     enemyMove(enemyConteiner);
     renederItemBar();  
     renderScoreBoard();

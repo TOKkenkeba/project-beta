@@ -10,8 +10,7 @@ function createHorde() {
    
     createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
     createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
-    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
-   
+    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);  
     createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
 }
 
@@ -48,8 +47,11 @@ function enemyMove(enemyConteiner) {
             let line = Math.sqrt((changeX - item[0]) * (changeX - item[0]) + (changeY - item[1]) * (changeY - item[1]));
             xxx = (changeX - item[0]) / line * item[5];
             yyy = (changeY - item[1]) / line * item[6];
-            item[0] += xxx;
-            item[1] += yyy;
+            if(line>distanceFromPlayer){
+                item[0] += xxx;
+                item[1] += yyy;
+            }
+           
       
             let angle =Math.atan((item[1]-changeY)/(item[0]-changeX))*180/Math.PI-90;
           
@@ -57,7 +59,7 @@ function enemyMove(enemyConteiner) {
                 angle+=180;
              }
 
-             rotateEnemy(item[0], item[1], item[2], item[3],angle,item[7]);
+            rotateEnemy(item[0], item[1], item[2], item[3],angle,item[7]);
            
             detectColision(j);
         }
@@ -91,10 +93,7 @@ function rotateEnemy(x,y,width,high,angle,index){
     }   
     context.restore();
    }
-    
- 
-    
-
+  
 }
 
 
