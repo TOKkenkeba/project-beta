@@ -1,17 +1,17 @@
-let enemyMag = [[]];
+let enemyMag = [];
 let indexEnemyMag = 0;
 let bulletObjectEnemy = canvas.getContext("2d");
-let interval = setInterval(() => bulletEnemy(), enemyBulletSpeed);
+let intervalEnemyShot = setInterval(() => bulletEnemy(), enemyBulletSpeed);
 function bulletEnemy() {
 
+   
+    this.index = Math.round(Math.random(enemyConteiner.length - 1) * (enemyConteiner.length - 1));
+   // console.log(index, enemyConteiner);
 
-    index = Math.round(Math.random(enemyConteiner.length - 1) * (enemyConteiner.length - 1));
-    console.log(index, enemyConteiner);
-
-    this.width = enemyConteiner[index][2];
-    this.high = enemyConteiner[index][3];
-    this.x = enemyConteiner[index][0];
-    this.y = enemyConteiner[index][1];
+    this.width = enemyConteiner[ this.index][2];
+    this.high = enemyConteiner[ this.index][3];
+    this.x = enemyConteiner[ this.index][0];
+    this.y = enemyConteiner[ this.index][1];
     this.pageX = x;
     this.pageY = y;
     enemyMag.push([]);
@@ -58,10 +58,39 @@ function moveBulletEnemy() {
             indexEnemyMag = enemyMag.length;
         }
 
-
+        hitPlayerWithhBullets(enemyMag[i], i)
     }
 }
 
+function hitPlayerWithhBullets(item, bullet) {
+
+    if (item != undefined) {
+        console.log(enemyMag);
+        for (let j = 0; j < enemyMag.length; j++) {
+            
+            if ((item[0] >= x && item[0] <= x + playerWidth && item[1] >= y && item[1] <= y + playerHigh)
+                || (item[0] + bullWidth >= x && item[0] + bullWidth <= x+ playerWidth && item[1] >= y && item[1] <= y + playerHigh)
+                || (item[0] >= x && item[0] <= x+ playerWidth && item[1] + bullHigh >= y && item[1] + bullHigh <= y + playerHigh)
+                || (item[0] + bullWidth >= x && item[0] + bullWidth <= x + playerWidth && item[1] + bullHigh >= y && item[1] + bullHigh <= y + playerHigh)) {
+
+                enemyMag.splice(bullet, 1);
+                indexEnemyMag = enemyMag.length;
+                playerHP -= bulletDmg;
+
+                checkIfPlayerDead();
+            }
+        }
+    }
+
+}
+
+function checkIfPlayerDead() {
+    if (playerHP <= 0) {     
+        clearInterval(intervalEnemyShot);
+        gameOver();
+        
+    }
+}
 
 
 function rotateBulletEnemy(i, j, angle) {

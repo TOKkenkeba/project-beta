@@ -3,7 +3,8 @@ let mainBackground = new Image();
 mainBackground.src = 'gif/background.jpg';
 
 //player
-let playerHP = 1000;
+let playerHP = 2000;
+const playerHPstart = 2000;
 let playerSpeedX = 10;
 let playerSpeedY = 10;
 let playerHigh = 60;
@@ -46,3 +47,5 @@ enemyImageMin.src = 'gif/enemymin.png';
 //skill
 let teleportImage = new Image();
 teleportImage.src = 'gif/teleport.png';
+let healImage = new Image();
+healImage.src = 'gif/heal.png';

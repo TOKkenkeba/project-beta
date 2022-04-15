@@ -29,13 +29,14 @@ function fillBar(item,text,x,y,width,high){
     if(text=="1"){
         item.drawImage(teleportImage,x,y, width, high);
     }
-    
-    
-
-    
+    if(text=="2"){
+        item.drawImage(healImage,x+10,y+10, width-20, high-20);
+    }
+        
     item.fillRect(x,y,width,high);
     item.font = "30px ariel";
     item.fillStyle="black";
     item.fillText(text,x+5,y+30);
    
 }
+

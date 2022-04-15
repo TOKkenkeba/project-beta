@@ -1,5 +1,5 @@
 let mag = [[]];
-let index = 0;
+let indexPlayerMag = 0;
 let bulletObject = canvas.getContext("2d");
 
 function bullet(high, width, x, y, pageX, pageY) {
@@ -10,8 +10,8 @@ function bullet(high, width, x, y, pageX, pageY) {
     let angle = calculateAngle(mouseX,mouseY,changeX,changeY);
     let stepXY =calculateStepForBullet(x,y,pageX,pageY,line,bullSpeed);
     
-    mag[index].push(x + playerWidth / 2 - bullWidth / 2, y + playerHigh / 2 - bullHigh / 2, width, high, index, stepXY[0],stepXY[1], angle);
-    index++;
+    mag[indexPlayerMag].push(x + playerWidth / 2 - bullWidth / 2, y + playerHigh / 2 - bullHigh / 2, width, high, index, stepXY[0],stepXY[1], angle);
+    indexPlayerMag++;
 }
 
 function calculateDiagonal(poinOneX,pointOneY,pointTwoX,pointTwoY){
@@ -56,11 +56,11 @@ function moveBullet() {
         }
         if ((item[0] > canvas.width || item[0] < 0) && item[0] != undefined) {
             mag.splice(i, 1);
-            index = mag.length;
+            indexPlayerMag = mag.length;
         }
         if ((item[1] > canvas.height || item[1] < 0) && item[1] != undefined) {
             mag.splice(i, 1);
-            index = mag.length;
+            indexPlayerMag = mag.length;
         }
 
         hitEnemyWithhBullets(mag[i], i);
@@ -79,7 +79,7 @@ function hitEnemyWithhBullets(item, bullet) {
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
 
                 mag.splice(bullet, 1);
-                index = mag.length;
+                indexPlayerMag = mag.length;
                 enemyConteiner[j][4] -= bulletDmg;
 
                 checkIfDead(enemyConteiner[j][4], j);

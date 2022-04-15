@@ -77,7 +77,7 @@ function init() {
    
 
 }
-//document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 function animate() {
     
@@ -90,9 +90,10 @@ function animate() {
     enemyMove(enemyConteiner);
     renederItemBar();  
     renderScoreBoard();
-    xpBarRender();  
+    xpBarRender(); 
     skillsCheck();
     xpBarRenderFill();
+    renderHpBar(); 
     if(gameOverStage==false){
     window.requestAnimationFrame(animate);
     }
