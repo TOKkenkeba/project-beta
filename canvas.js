@@ -38,10 +38,12 @@ document.addEventListener('visibilitychange', function() {
 
         gameOverStage==false;
         keysPressed ={};
+        clearInterval(intervalEnemyShot);
     }
     
 	else{
-    gameOverStage==true;
+      gameOverStage==true;
+      intervalEnemyShot = setInterval(() => bulletEnemy(), enemyBulletSpeed);
     }
 });
 
