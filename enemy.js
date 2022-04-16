@@ -7,10 +7,10 @@ let enemyMin = canvas.getContext("2d");
 createHorde();
 
 function createHorde() {
-   
+
     createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
     createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
-    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);  
+    createEnemy(enemyWidth, enemyHight, enemyHp, enemySpeedX, enemySpeedY, enemyIndex);
     createEnemy(enemyWidthMin, enemyHightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
 }
 
@@ -25,10 +25,10 @@ function createEnemy(Width, Hight, Hp, SpeedX, SpeedY, Index) {
             enemyConteiner[enemyIndex].push(enemyX, 0, Width, Hight, Hp, SpeedX, SpeedY, Index);
             break;
         case 2:
-            enemyConteiner[enemyIndex].push(0, enemyY, Width, Hight, Hp, SpeedX, SpeedY,  Index);
+            enemyConteiner[enemyIndex].push(0, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Index);
             break;
         case 3:
-            enemyConteiner[enemyIndex].push(canvas.width - Width, enemyY, Width, Hight, Hp, SpeedX, SpeedY,  Index);
+            enemyConteiner[enemyIndex].push(canvas.width - Width, enemyY, Width, Hight, Hp, SpeedX, SpeedY, Index);
             break;
         case 4:
             enemyConteiner[enemyIndex].push(enemyX, canvas.height - Hight, Width, Hight, Hp, SpeedX, SpeedY, Index);
@@ -47,23 +47,40 @@ function enemyMove(enemyConteiner) {
             let line = Math.sqrt((changeX - item[0]) * (changeX - item[0]) + (changeY - item[1]) * (changeY - item[1]));
             xxx = (changeX - item[0]) / line * item[5];
             yyy = (changeY - item[1]) / line * item[6];
-            if(line>distanceFromPlayer){
-                item[0] += xxx;
-                item[1] += yyy;
-            }
-           
-      
-            let angle =Math.atan((item[1]-changeY)/(item[0]-changeX))*180/Math.PI-90;
-          
-            if(changeX>item[0]){
-                angle+=180;
-             }
+            if (line > distanceFromPlayer) {
+                if (detectEachOther(item[0] + xxx, item[1], i)) {
+                    item[0] += xxx;
+                }
+                if (detectEachOther(item[0], item[1] + yyy, i)) {
+                    item[1] += yyy;
+                }
 
-            rotateEnemy(item[0], item[1], item[2], item[3],angle,item[7]);
-           
+            }
+
+
+            let angle = Math.atan((item[1] - changeY) / (item[0] - changeX)) * 180 / Math.PI - 90;
+
+            if (changeX > item[0]) {
+                angle += 180;
+            }
+
+            rotateEnemy(item[0], item[1], item[2], item[3], angle, item[7]);
+
             detectColision(j);
         }
     }
+}
+function detectEachOther(newX, NewY, i) {
+    for (let j = 0; j < enemyConteiner.length; j++) {
+        if (i != j) {
+            if (Math.abs((newX + enemyConteiner[i][2]) / 2 - (enemyConteiner[j][0] + enemyConteiner[j][2]) / 2) < (enemyConteiner[i][2] + enemyConteiner[j][2]) / 3 && Math.abs((NewY + enemyConteiner[i][3]) / 2 - (enemyConteiner[j][1] + enemyConteiner[j][3]) / 2) < (enemyConteiner[i][3] + enemyConteiner[j][3]) / 3) {
+
+                return false;
+            }
+        }
+
+    }
+    return true;
 }
 
 function detectColision(j) {
@@ -79,21 +96,21 @@ function detectColision(j) {
 
 }
 
-function rotateEnemy(x,y,width,high,angle,index){
+function rotateEnemy(x, y, width, high, angle, index) {
 
-   if(gameOverStage==false){
-    context.save();
-    context.translate(x+width/2, y+high/2);    
-    context.rotate(angle* Math.PI / 180);
-    if(index%2==0){
-        enemy.drawImage(enemyImage,-width/2,-high/2, width, high);
+    if (gameOverStage == false) {
+        context.save();
+        context.translate(x + width / 2, y + high / 2);
+        context.rotate(angle * Math.PI / 180);
+        if (index % 2 == 0) {
+            enemy.drawImage(enemyImage, -width / 2, -high / 2, width, high);
+        }
+        else {
+            enemyMin.drawImage(enemyImageMin, -width / 2, -high / 2, width, high);
+        }
+        context.restore();
     }
-    else {
-        enemyMin.drawImage(enemyImageMin,-width/2,-high/2, width, high);
-    }   
-    context.restore();
-   }
-  
+
 }
 
 

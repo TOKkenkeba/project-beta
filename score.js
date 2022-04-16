@@ -56,7 +56,6 @@ function countScoreAndLevel() {
 
 function renderHpBar() {
   this.fill = playerHP/2000; 
-  console.log(this.fill);
   hpBar.beginPath();
   hpBar.arc(hpBarX, hpBarY, hpBarRadius, 0, this.fill*2 * Math.PI);
   hpBar.fillStyle = "rgba(0, 0 , 0, 0)";

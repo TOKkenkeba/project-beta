@@ -6,7 +6,6 @@ function bulletEnemy() {
 
    
     this.index = Math.round(Math.random(enemyConteiner.length - 1) * (enemyConteiner.length - 1));
-   // console.log(index, enemyConteiner);
 
     this.width = enemyConteiner[ this.index][2];
     this.high = enemyConteiner[ this.index][3];
@@ -65,7 +64,7 @@ function moveBulletEnemy() {
 function hitPlayerWithhBullets(item, bullet) {
 
     if (item != undefined) {
-        console.log(enemyMag);
+       
         for (let j = 0; j < enemyMag.length; j++) {
             
             if ((item[0] >= x && item[0] <= x + playerWidth && item[1] >= y && item[1] <= y + playerHigh)
