@@ -1,26 +1,18 @@
-let barNumber = 5;
-let itemBarWidth=100*barNumber;
-let itemBarHeigh=100;
-let itemBarX =canvas.width/2-itemBarWidth/2;
-let itemBarY= canvas.height-itemBarHeigh;
 let itemBar = canvas.getContext("2d");
-
-let itemOne = canvas.getContext("2d");
-let itemTwo= canvas.getContext("2d");
-let itemThree = canvas.getContext("2d");
-let itemFour = canvas.getContext("2d");
-let itemFive = canvas.getContext("2d");
 
 function renederItemBar(){
     
     itemBar.fillStyle = "rgba(255, 255, 255, 0.1)";
     itemBar.fillRect(itemBarX,itemBarY,itemBarWidth,itemBarHeigh);
 
-     fillBar(itemOne,"1",itemBarX+2.5,itemBarY+2.5,itemBarWidth/barNumber-5,itemBarHeigh-5);
-     fillBar(itemTwo,"2",itemBarX+2.5+itemBarWidth/barNumber,itemBarY+2.5,itemBarWidth/barNumber-5,itemBarHeigh-5);
-     fillBar(itemThree,"3",itemBarX+2.5+2*itemBarWidth/barNumber,itemBarY+2.5,itemBarWidth/barNumber-5,itemBarHeigh-5);
-     fillBar(itemFour,"4",itemBarX+2.5+3*itemBarWidth/barNumber,itemBarY+2.5,itemBarWidth/barNumber-5,itemBarHeigh-5);
-     fillBar(itemFive,"5",itemBarX+2.5+4*itemBarWidth/barNumber,itemBarY+2.5,itemBarWidth/barNumber-5,itemBarHeigh-5);
+    this.itemBarX=itemBarX+canvas.height*0.0016;
+    this.itemBarY=itemBarY+canvas.height*0.0016;
+    this.itemBarWidth=itemBarWidth/barNumber-canvas.height*0.0032;
+    this.itemBarHeigh= itemBarHeigh-canvas.height*0.0032;
+
+    for (let index = 0; index < barNumber; index++) {
+        fillBar(itemBar,`${index+1}`,this.itemBarX+index*itemBarWidth/barNumber,this.itemBarY,this.itemBarWidth,this.itemBarHeigh);
+    }
 
 }
 
@@ -30,13 +22,13 @@ function fillBar(item,text,x,y,width,high){
         item.drawImage(teleportImage,x,y, width, high);
     }
     if(text=="2"){
-        item.drawImage(healImage,x+10,y+10, width-20, high-20);
+        item.drawImage(healImage,x+canvas.height*0.04/6,y+canvas.height*0.04/6, width-canvas.height*0.04/3, high-canvas.height*0.04/3);
     }
         
     item.fillRect(x,y,width,high);
-    item.font = "30px ariel";
+    item.font = `${canvas.height*0.03}px ariel`;
     item.fillStyle="black";
-    item.fillText(text,x+5,y+30);
+    item.fillText(text,x+canvas.height*0.04/12,y+canvas.height*0.03);
    
 }
 

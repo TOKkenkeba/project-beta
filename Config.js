@@ -1,3 +1,8 @@
+//canvas
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth - 4;
+canvas.height = window.innerHeight - 6;
+
 //main
 let mainBackground = new Image();
 mainBackground.src = 'gif/background.jpg';
@@ -7,8 +12,8 @@ let playerHP = 2000;
 const playerHPstart = 2000;
 let playerSpeedX = 10;
 let playerSpeedY = 10;
-let playerHigh = 60;
-let playerWidth = 60;
+let playerHigh = canvas.height*0.04;//60
+let playerWidth = canvas.height*0.04;
 let playerImage = new Image();
 playerImage.src = 'gif/Starship.png';
 
@@ -23,8 +28,8 @@ bulletImage.src = 'gif/bullet.png';
 
 //Enemy Type deff
 let enemyIndex = 0;
-let enemyHight = 100;
-let enemyWidth = 100;
+let enemyHight = canvas.height*0.08;
+let enemyWidth = canvas.height*0.08;
 let enemyHp = 200;
 let enemySpeedX = 0.5;
 let enemySpeedY = 0.5;
@@ -36,8 +41,8 @@ enemyImage.src = 'gif/enemy.png';
 let enemyBulletSpeed=400;
 let distanceFromPlayer = 800;
 let enemyIndexMin = 1;
-let enemyHightMin = 50;
-let enemyWidthMin = 50;
+let enemyHightMin = canvas.height*0.04;
+let enemyWidthMin = canvas.height*0.04;
 let enemyHpMin = 100;
 let enemySpeedXMin = 1;
 let enemySpeedYMin = 1;
@@ -49,3 +54,11 @@ let teleportImage = new Image();
 teleportImage.src = 'gif/teleport.png';
 let healImage = new Image();
 healImage.src = 'gif/heal.png';
+
+
+//item Bar
+let barNumber = 5;
+let itemBarWidth=canvas.height*0.08*barNumber;
+let itemBarHeigh=canvas.height*0.08;
+let itemBarX =canvas.width/2-itemBarWidth/2;
+let itemBarY= canvas.height-itemBarHeigh;

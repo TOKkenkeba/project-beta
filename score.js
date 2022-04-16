@@ -3,19 +3,19 @@ let xpLevel = 0;
 let xpBarLevel = 0;
 
 let scoreboard = canvas.getContext("2d");
-let scoreBoardWidth = 200;
-let scoreBoradHigh = 100;
+let scoreBoardWidth = canvas.height*0.16;
+let scoreBoradHigh = canvas.height*0.08;
 let scoreboardX = canvas.width - scoreBoardWidth;
 let scoreboardY = 0;
 
 let xpBar = canvas.getContext("2d");
 let xpBarX = itemBarX;
-let xpBarY = itemBarY - 15;
+let xpBarY = itemBarY - canvas.height*0.015;
 let xpBarWidth = itemBarWidth;
-let xpBarHigh = 10;
+let xpBarHigh = canvas.height*0.01;
 
 let hpBar = canvas.getContext("2d");
-let hpBarLineWidth = 10;
+let hpBarLineWidth = canvas.height*0.01;
 let hpBarRadius = (itemBarHeigh+xpBarHigh-10)/2;
 let hpBarX = itemBarX-hpBarRadius-hpBarLineWidth;
 let hpBarY = itemBarY + hpBarRadius-hpBarLineWidth;
@@ -24,7 +24,7 @@ let hpBarY = itemBarY + hpBarRadius-hpBarLineWidth;
 function renderScoreBoard() {
   scoreboard.fillStyle = "rgba(255, 255, 255, 0.1)";
   scoreboard.fillRect(scoreboardX, scoreboardY, scoreBoardWidth, scoreBoradHigh);
-  scoreboard.font = "20px ariel";
+  scoreboard.font = `${canvas.height*0.02}px ariel`;
   scoreboard.fillStyle = "rgba(0, 255, 0, 0.5)";
   scoreboard.fillText(`Score : ${score}`, scoreboardX + scoreBoardWidth * 30 / 100, scoreboardY + scoreBoradHigh * 30 / 100);
   scoreboard.fillText(`Level : ${xpLevel}`, scoreboardX + scoreBoardWidth * 30 / 100, scoreboardY + scoreBoradHigh * 70 / 100);
@@ -65,8 +65,8 @@ function renderHpBar() {
   hpBar.strokeStyle = "rgba(0, 255, 0, 0.5)";
   hpBar.stroke();
 
-  scoreboard.font = "20px ariel";
+  scoreboard.font = `${canvas.height*0.02}px ariel`;
   scoreboard.fillStyle = "rgba(0, 255, 0, 0.5)";
-  scoreboard.fillText(`HP`, hpBarX -hpBarRadius/2 +12, hpBarY - hpBarRadius/7 );
-  scoreboard.fillText(`${playerHP}`, hpBarX - hpBarRadius/2+5 , hpBarY + hpBarRadius/2);
+  scoreboard.fillText(`HP`, hpBarX -hpBarRadius/2 +canvas.height*0.01, hpBarY - hpBarRadius/7 );
+  scoreboard.fillText(`${playerHP}`, hpBarX - hpBarRadius/2+canvas.height*0.001 , hpBarY + hpBarRadius/2);
 }

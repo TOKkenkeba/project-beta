@@ -1,8 +1,3 @@
-const canvas = document.querySelector("canvas");
-
-canvas.width = window.innerWidth - 4;
-canvas.height = window.innerHeight - 6;
-
 let mouseX;
 let mouseY;
 
