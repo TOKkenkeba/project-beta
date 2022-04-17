@@ -2,7 +2,7 @@ let mag = [[]];
 let indexPlayerMag = 0;
 let bulletObject = canvas.getContext("2d");
 
-function bullet(high, width, x, y, pageX, pageY) {
+function bullet(Height, width, x, y, pageX, pageY) {
 
     mag.push([]);
 
@@ -10,7 +10,7 @@ function bullet(high, width, x, y, pageX, pageY) {
     let angle = calculateAngle(mouseX,mouseY,changeX,changeY);
     let stepXY =calculateStepForBullet(x,y,pageX,pageY,line,bullSpeed);
     
-    mag[indexPlayerMag].push(x + playerWidth / 2 - bullWidth / 2, y + playerHigh / 2 - bullHigh / 2, width, high, index, stepXY[0],stepXY[1], angle);
+    mag[indexPlayerMag].push(x + playerWidth / 2 - bullWidth / 2, y + playerHeight / 2 - bullHeight / 2, width, Height, index, stepXY[0],stepXY[1], angle);
     indexPlayerMag++;
 }
 
@@ -75,8 +75,8 @@ function hitEnemyWithhBullets(item, bullet) {
 
             if ((item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
                 || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] >= enemyConteiner[j][1] && item[1] <= enemyConteiner[j][1] + enemyConteiner[j][3])
-                || (item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])
-                || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHigh >= enemyConteiner[j][1] && item[1] + bullHigh <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
+                || (item[0] >= enemyConteiner[j][0] && item[0] <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHeight >= enemyConteiner[j][1] && item[1] + bullHeight <= enemyConteiner[j][1] + enemyConteiner[j][3])
+                || (item[0] + bullWidth >= enemyConteiner[j][0] && item[0] + bullWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && item[1] + bullHeight >= enemyConteiner[j][1] && item[1] + bullHeight <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
 
                 mag.splice(bullet, 1);
                 indexPlayerMag = mag.length;
@@ -104,9 +104,9 @@ function checkIfDead(enemyHp, enemy1) {
 
 function rotateBullet(i, j, angle) {
     context.save();
-    context.translate(i + bullWidth / 2, j + bullHigh / 2);
+    context.translate(i + bullWidth / 2, j + bullHeight / 2);
     context.rotate(angle * Math.PI / 180);
-    bulletObject.drawImage(bulletImage, -bullWidth / 2, -bullHigh / 2, bullWidth, bullHigh);
+    bulletObject.drawImage(bulletImage, -bullWidth / 2, -bullHeight / 2, bullWidth, bullHeight);
     context.restore();
 }
 

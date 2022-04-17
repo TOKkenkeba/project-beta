@@ -16,16 +16,16 @@ function renederItemBar(){
 
 }
 
-function fillBar(item,text,x,y,width,high){
+function fillBar(item,text,x,y,width,Height){
     item.fillStyle = "rgba(255, 255, 255, 0.1)";
     if(text=="1"){
-        item.drawImage(teleportImage,x,y, width, high);
+        item.drawImage(teleportImage,x,y, width, Height);
     }
     if(text=="2"){
-        item.drawImage(healImage,x+canvas.height*0.04/6,y+canvas.height*0.04/6, width-canvas.height*0.04/3, high-canvas.height*0.04/3);
+        item.drawImage(healImage,x+canvas.height*0.04/6,y+canvas.height*0.04/6, width-canvas.height*0.04/3, Height-canvas.height*0.04/3);
     }
         
-    item.fillRect(x,y,width,high);
+    item.fillRect(x,y,width,Height);
     item.font = `${canvas.height*0.03}px ariel`;
     item.fillStyle="black";
     item.fillText(text,x+canvas.height*0.04/12,y+canvas.height*0.03);

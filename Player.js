@@ -59,26 +59,26 @@ function movePlayer() {
         }
     }
     if (keysPressed[83]) {
-        if (changeY < (canvas.height - speedY - playerHigh)) {
+        if (changeY < (canvas.height - speedY - playerHeight)) {
             changeY += speedY;
         }
         else {
-            changeY = canvas.height - playerHigh;
+            changeY = canvas.height - playerHeight;
         }
     }
 }
 
 function rotatePlayer(){
 
-    let angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
+    this.angle =Math.atan((mouseY-changeY)/(mouseX-changeX))*180/Math.PI-90;
     if(changeX<mouseX){
-      angle+=180;
+      this.angle+=180;
     }
  
     context.save();
-    context.translate(changeX+playerWidth/2, changeY+playerHigh/2);    
-    context.rotate(angle * Math.PI / 180);
+    context.translate(changeX+playerWidth/2, changeY+playerHeight/2);    
+    context.rotate(this.angle* Math.PI / 180);
     
-    playerModel.drawImage(playerImage,-playerWidth/2,-playerHigh/2,playerWidth,playerHigh);
+    playerModel.drawImage(playerImage,-playerWidth/2,-playerHeight/2,playerWidth,playerHeight);
     context.restore();
 }

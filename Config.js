@@ -12,14 +12,14 @@ let playerHP = 2000;
 const playerHPstart = 2000;
 let playerSpeedX = 10;
 let playerSpeedY = 10;
-let playerHigh = canvas.height*0.04;//60
-let playerWidth = canvas.height*0.04;
+let playerHeight = canvas.height * 0.04;//60
+let playerWidth = canvas.height * 0.04;
 let playerImage = new Image();
 playerImage.src = 'gif/Starship.png';
 
 //bullet
 let bullSpeed = 4;
-let bullHigh = 15;
+let bullHeight = 15;
 let bullWidth = 15;
 let bulletDmg = 20;
 let bulletImage = new Image();
@@ -27,9 +27,9 @@ bulletImage.src = 'gif/bullet.png';
 
 
 //Enemy Type deff
-let enemyIndex = 0;
-let enemyHight = canvas.height*0.08;
-let enemyWidth = canvas.height*0.08;
+let enemyIndexDeff = 0;
+let enemyHeight = canvas.height * 0.08;
+let enemyWidth = canvas.height * 0.08;
 let enemyHp = 200;
 let enemySpeedX = 0.5;
 let enemySpeedY = 0.5;
@@ -38,16 +38,36 @@ enemyImage.src = 'gif/enemy.png';
 
 
 //Enemy Type extra
-let enemyBulletSpeed=400;
+let enemyBulletSpeed = 400;
 let distanceFromPlayer = 800;
 let enemyIndexMin = 1;
-let enemyHightMin = canvas.height*0.04;
-let enemyWidthMin = canvas.height*0.04;
+let enemyHeightMin = canvas.height * 0.04;
+let enemyWidthMin = canvas.height * 0.04;
 let enemyHpMin = 100;
 let enemySpeedXMin = 1;
 let enemySpeedYMin = 1;
 let enemyImageMin = new Image();
 enemyImageMin.src = 'gif/enemymin.png';
+
+//Enemy Type Carry
+let enemyIndexCarry = 2;
+let enemyHeightCarry = canvas.height * 0.12;
+let enemyWidthCarry = canvas.height * 0.12;
+let enemyHpCarry = 100;
+let enemySpeedXCarry = 0.1;
+let enemySpeedYCarry = 0.1;
+let enemyImageCarry = new Image();
+enemyImageCarry.src = 'gif/3.png';
+
+//Enemy Type BullEnemy
+let enemyIndexBullEnemy = 3;
+let enemyHeightBullEnemy = canvas.height * 0.04;
+let enemyWidthBullEnemy = canvas.height * 0.04;
+let enemyHpBullEnemy = 60;
+let enemySpeedXBullEnemy = 1;
+let enemySpeedYBullEnemy = 1;
+let enemyImageBullEnemy = new Image();
+enemyImageBullEnemy.src = 'gif/1.png';
 
 //skill
 let teleportImage = new Image();
@@ -58,7 +78,11 @@ healImage.src = 'gif/heal.png';
 
 //item Bar
 let barNumber = 5;
-let itemBarWidth=canvas.height*0.08*barNumber;
-let itemBarHeigh=canvas.height*0.08;
-let itemBarX =canvas.width/2-itemBarWidth/2;
-let itemBarY= canvas.height-itemBarHeigh;
+let itemBarWidth = canvas.height * 0.08 * barNumber;
+let itemBarHeigh = canvas.height * 0.08;
+let itemBarX = canvas.width / 2 - itemBarWidth / 2;
+let itemBarY = canvas.height - itemBarHeigh;
+
+//
+let createEnmeyMinX = 100;
+let createEnmeyMinY = 100;

@@ -25,7 +25,7 @@ document.addEventListener("mousedown", (event)=>{
     if(event.which==1){
         clearInterval(shot);
         shot = setInterval(() => {
-            bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY)
+            bullet(bullHeight, bullWidth, changeX, changeY, mouseX, mouseY)
         }, bullSpeed * 50);
         click=false;
     }
@@ -49,8 +49,8 @@ document.addEventListener('visibilitychange', function() {
 
 document.addEventListener("click", (event) => {
    if(click){
-    bullet(bullHigh, bullWidth, changeX, changeY, mouseX, mouseY);
-    if(gameOverStage==true && event.pageX > restartX && event.pageX<restartX+restartWidth && event.pageY>restartY&&event.pageY<restartY+restartHigh){
+    bullet(bullHeight, bullWidth, changeX, changeY, mouseX, mouseY);
+    if(gameOverStage==true && event.pageX > restartX && event.pageX<restartX+restartWidth && event.pageY>restartY&&event.pageY<restartY+restartHeight){
         restartGame();
     }
    }
