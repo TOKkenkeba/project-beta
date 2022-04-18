@@ -14,10 +14,7 @@ let restartHeight=gameOverScreenHeight/4 ;
 
 function gameOver(){
    
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
+    clearShotFromEnemyInterval();
 
     gameOverStage=true;
     gameOverScreen.fillStyle = "rgba(128,128,128, 1)";
@@ -40,10 +37,7 @@ function gameOver(){
 }
 
 function restartGame(){
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
-    clearInterval(intervalEnemyShot);
+    clearShotFromEnemyInterval();
     gameOverStage=false;
     location.reload();
 }

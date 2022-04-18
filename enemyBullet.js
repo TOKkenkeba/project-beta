@@ -1,11 +1,20 @@
 let enemyMag = [];
 let indexEnemyMag = 0;
 let bulletObjectEnemy = canvas.getContext("2d");
-let intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexDeff), enemyBulletSpeedDeff);
-intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexMin), enemyBulletSpeedMin);
-intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexCarry), enemyBulletSpeedCarry);
-intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexBullEnemy), enemyBulletSpeedBullEnemy);
+shotFromEnemyInterval();
 
+function shotFromEnemyInterval(){
+    let intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexDeff), enemyBulletSpeedDeff);
+    intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexMin), enemyBulletSpeedMin);
+    intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexCarry), enemyBulletSpeedCarry);
+    intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexBullEnemy), enemyBulletSpeedBullEnemy);   
+}
+function clearShotFromEnemyInterval(){
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+}
 
 function bulletEnemy(id) {
 
