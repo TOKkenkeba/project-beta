@@ -13,7 +13,12 @@ let restartWidth =gameOverScreenWidth/3;
 let restartHeight=gameOverScreenHeight/4 ;
 
 function gameOver(){
-    
+   
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+
     gameOverStage=true;
     gameOverScreen.fillStyle = "rgba(128,128,128, 1)";
     gameOverScreen.fillRect(gameOverScreenX,gameOverScreenY,gameOverScreenWidth,gameOverScreenHeight);
@@ -35,6 +40,10 @@ function gameOver(){
 }
 
 function restartGame(){
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
+    clearInterval(intervalEnemyShot);
     gameOverStage=false;
     location.reload();
 }

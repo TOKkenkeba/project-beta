@@ -9,7 +9,7 @@ createHorde();
 
 
 function createHorde() {
-  
+
     createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff);
     createEnemy(enemyWidthMin, enemyHeightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
     createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff);
@@ -113,8 +113,8 @@ function detectColision(j) {
             || (changeX + playerWidth >= enemyConteiner[j][0] && changeX + playerWidth <= enemyConteiner[j][0] + enemyConteiner[j][2] && changeY + playerHeight >= enemyConteiner[j][1] && changeY + playerHeight <= enemyConteiner[j][1] + enemyConteiner[j][3])) {
 
             gameOver();
-
-            enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[j]);
+            //enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[j]);
+           
         }
     }
 

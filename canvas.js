@@ -39,6 +39,10 @@ document.addEventListener('visibilitychange', function() {
         gameOverStage==false;
         keysPressed ={};
         clearInterval(intervalEnemyShot);
+        clearInterval(intervalEnemyShot);
+        clearInterval(intervalEnemyShot);
+        clearInterval(intervalEnemyShot);
+        clearInterval(intervalEnemyShot);
     }
     
 	else{

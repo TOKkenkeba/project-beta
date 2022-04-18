@@ -10,7 +10,7 @@ function bullet(Height, width, x, y, pageX, pageY) {
     let angle = calculateAngle(mouseX,mouseY,changeX,changeY);
     let stepXY =calculateStepForBullet(x,y,pageX,pageY,line,bullSpeed);
     
-    mag[indexPlayerMag].push(x + playerWidth / 2 - bullWidth / 2, y + playerHeight / 2 - bullHeight / 2, width, Height, index, stepXY[0],stepXY[1], angle);
+    mag[indexPlayerMag].push(x + playerWidth / 2 - bullWidth / 2, y + playerHeight / 2 - bullHeight / 2, width, Height, 0, stepXY[0],stepXY[1], angle);
     indexPlayerMag++;
 }
 

@@ -24,10 +24,12 @@ let bullWidth = 15;
 let bulletDmg = 20;
 let bulletImage = new Image();
 bulletImage.src = 'gif/bullet.png';
-
+let bulletImageEnemy = new Image();
+bulletImageEnemy.src = 'gif/enemyBullets.png';
 
 //Enemy Type deff
 let enemyIndexDeff = 0;
+let enemyBulletSpeedDeff=2200;
 let enemyHeight = canvas.height * 0.08;
 let enemyWidth = canvas.height * 0.08;
 let enemyHp = 200;
@@ -38,6 +40,7 @@ enemyImage.src = 'gif/enemy.png';
 
 
 //Enemy Type extra
+let enemyBulletSpeedMin=1600;
 let enemyBulletSpeed = 400;
 let distanceFromPlayer = 800;
 let enemyIndexMin = 1;
@@ -50,6 +53,7 @@ let enemyImageMin = new Image();
 enemyImageMin.src = 'gif/enemymin.png';
 
 //Enemy Type Carry
+let enemyBulletSpeedCarry=2900;
 let enemyIndexCarry = 2;
 let enemyHeightCarry = canvas.height * 0.12;
 let enemyWidthCarry = canvas.height * 0.12;
@@ -60,6 +64,7 @@ let enemyImageCarry = new Image();
 enemyImageCarry.src = 'gif/3.png';
 
 //Enemy Type BullEnemy
+let enemyBulletSpeedBullEnemy=700;
 let enemyIndexBullEnemy = 3;
 let enemyHeightBullEnemy = canvas.height * 0.04;
 let enemyWidthBullEnemy = canvas.height * 0.04;
