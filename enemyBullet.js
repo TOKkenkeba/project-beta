@@ -1,10 +1,11 @@
 let enemyMag = [];
 let indexEnemyMag = 0;
 let bulletObjectEnemy = canvas.getContext("2d");
+let intervalEnemyShot;
 shotFromEnemyInterval();
 
 function shotFromEnemyInterval(){
-    let intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexDeff), enemyBulletSpeedDeff);
+    intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexDeff), enemyBulletSpeedDeff);
     intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexMin), enemyBulletSpeedMin);
     intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexCarry), enemyBulletSpeedCarry);
     intervalEnemyShot = setInterval(() => bulletEnemy(enemyIndexBullEnemy), enemyBulletSpeedBullEnemy);   
@@ -22,7 +23,6 @@ function bulletEnemy(id) {
     for (let index = 0; index < enemyConteiner.length; index++) {
 
         if (enemyConteiner[index][7] == enemyIndexCarry && enemyConteiner[enemyConteiner.length - 1][7] != enemyIndexBullEnemy) {
-            console.log("dsa");
             deployEnemyFromCarry(index);
         }
         else if (enemyConteiner[index][7] == id) {
@@ -49,7 +49,6 @@ function bulletEnemy(id) {
 
 
 function deployEnemyFromCarry(id) {
-    console.log(enemyConteiner);
     enemyConteiner.push([]);
     enemyConteiner[enemyIndex].push(enemyConteiner[id][0], enemyConteiner[id][1] - enemyConteiner[id][3], enemyWidthBullEnemy, enemyHeightBullEnemy, enemyHpBullEnemy, enemySpeedXBullEnemy, enemySpeedYBullEnemy, enemyIndexBullEnemy);
     enemyIndex++

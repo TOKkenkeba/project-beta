@@ -82,7 +82,7 @@ healImage.src = 'gif/heal.png';
 
 
 //item Bar
-let barNumber = 5;
+let barNumber = 2;
 let itemBarWidth = canvas.height * 0.08 * barNumber;
 let itemBarHeigh = canvas.height * 0.08;
 let itemBarX = canvas.width / 2 - itemBarWidth / 2;
