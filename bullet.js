@@ -95,7 +95,7 @@ function checkIfDead(enemyHp, enemy1) {
         countScoreAndLevel();
         if (enemyConteiner.length == 0) {
 
-            createHorde();
+            initLevel();
 
         }
 

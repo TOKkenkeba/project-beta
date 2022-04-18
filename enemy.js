@@ -5,52 +5,56 @@ let enemy = canvas.getContext("2d");
 let enemyMin = canvas.getContext("2d");
 let enemyIndex = 0;
 
-createHorde();
+//createHorde();
 
 
-function createHorde() {
+// function createHorde() {
 
-    createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff);
-    createEnemy(enemyWidthMin, enemyHeightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
-    createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff);
-    createEnemy(enemyWidthMin, enemyHeightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin);
-    createEnemy(enemyWidthCarry, enemyHeightCarry, enemyHpCarry, enemySpeedXCarry, enemySpeedYCarry, enemyIndexCarry);
+//     createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff,1);
+//     createEnemy(enemyWidthMin, enemyHeightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin,1);
+//     createEnemy(enemyWidth, enemyHeight, enemyHp, enemySpeedX, enemySpeedY, enemyIndexDeff,1);
+//     createEnemy(enemyWidthMin, enemyHeightMin, enemyHpMin, enemySpeedXMin, enemySpeedYMin, enemyIndexMin,1);
+//     createEnemy(enemyWidthCarry, enemyHeightCarry, enemyHpCarry, enemySpeedXCarry, enemySpeedYCarry, enemyIndexCarry,1);
 
-}
+// }
 
-function createEnemy(Width, Height, Hp, SpeedX, SpeedY, Index) {
 
-    if (createEnmeyMinX > canvas.width - Width) {
-        createEnmeyMinX = 100;
+function createEnemy(Width, Height, Hp, SpeedX, SpeedY, Index, times) {
+  
+    for (this.i = 0; this.i< times; this.i++) {
+
+        if (createEnmeyMinX > canvas.width - Width) {
+            createEnmeyMinX = 100;
+        }
+
+        if (createEnmeyMinY > canvas.height - Height) {
+            createEnmeyMinY = 100;
+        }
+
+        this.rand = Math.round(Math.random() * (4 - 1) + 1);
+        enemyConteiner.push([]);
+
+        switch (this.rand) {
+            case 1:
+                enemyConteiner[enemyIndex].push(createEnmeyMinX, 0, Width, Height, Hp, SpeedX, SpeedY, Index);
+                createEnmeyMinX += 200;
+                break;
+            case 2:
+                enemyConteiner[enemyIndex].push(0, createEnmeyMinY, Width, Height, Hp, SpeedX, SpeedY, Index);
+                createEnmeyMinY += 150;
+                break;
+            case 3:
+                enemyConteiner[enemyIndex].push(canvas.width - Width, createEnmeyMinY, Width, Height, Hp, SpeedX, SpeedY, Index);
+                createEnmeyMinY += 200;
+                break;
+            case 4:
+                enemyConteiner[enemyIndex].push(createEnmeyMinX, canvas.height - Height, Width, Height, Hp, SpeedX, SpeedY, Index);
+                createEnmeyMinX += 150;
+                break;
+        }
+
+        enemyIndex++;
     }
-
-    if (createEnmeyMinY > canvas.height - Height) {
-        createEnmeyMinY = 100;
-    }
-
-    this.rand = Math.round(Math.random() * (4 - 1) + 1);
-    enemyConteiner.push([]);
-
-    switch (this.rand) {
-        case 1:
-            enemyConteiner[enemyIndex].push(createEnmeyMinX, 0, Width, Height, Hp, SpeedX, SpeedY, Index);
-            createEnmeyMinX += 200;
-            break;
-        case 2:
-            enemyConteiner[enemyIndex].push(0, createEnmeyMinY, Width, Height, Hp, SpeedX, SpeedY, Index);
-            createEnmeyMinY += 150;
-            break;
-        case 3:
-            enemyConteiner[enemyIndex].push(canvas.width - Width, createEnmeyMinY, Width, Height, Hp, SpeedX, SpeedY, Index);
-            createEnmeyMinY += 200;
-            break;
-        case 4:
-            enemyConteiner[enemyIndex].push(createEnmeyMinX, canvas.height - Height, Width, Height, Hp, SpeedX, SpeedY, Index);
-            createEnmeyMinX += 150;
-            break;
-    }
-
-    enemyIndex++
 }
 
 function enemyMove(enemyConteiner) {
@@ -114,7 +118,7 @@ function detectColision(j) {
 
             gameOver();
             //enemyConteiner = enemyConteiner.filter((enemy) => enemy !== enemyConteiner[j]);
-           
+
         }
     }
 
