@@ -7,12 +7,14 @@ function skillsCheck() {
     if (tleleportHas && keysPressed[49] && mouseX <= canvas.width && mouseX >= 0 && mouseY >= 0 && mouseY <= canvas.height) {
         teleport();
         tleleportHas = false;
+        keysPressed[49] = false;
         setTimeout(() => teleportHasAllow(), 2000);
 
     }
     if (healHas && keysPressed[50]) {
         heal();
         healHas = false;
+        keysPressed[50] = false;
         setTimeout(() => healHasAllow(), 2000);
 
     }
@@ -31,6 +33,7 @@ function heal() {
     if (playerHP > playerHPstart) {
         playerHP = playerHPstart;
     }
+    
 
 }
 
